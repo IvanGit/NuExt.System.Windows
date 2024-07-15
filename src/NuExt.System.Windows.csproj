@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0-windows;net6.0-windows;net462</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageTags>nuext;extensions;windows;wpf;xaml;ui;async</PackageTags>
+    <Description>Provides miscellaneous Windows-specific extensions.
+
+Commonly Used Types:
+System.IO.IOUtils
+System.Windows.BindingProxy
+System.Windows.BindingProxy&lt;T&gt;
+System.Windows.WindowPlacement</Description>
+    <Version>0.1.0</Version>
+    <RootNamespace />
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logo128.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/IvanGit/NuExt.System.Windows</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" Key="00240000048000009400000006020000002400005253413100040000010001006fe78604a88c4435cd66f3783ab59c2a7cc5f1f20103d9274026db1aafd95fb317561a5cb328cbc43a2904e476382661c08fe9381e1f8ca562759b0040e2a648158be90ab2fbf35a7cd7a0db2f8d6c6774129f84bdf098b75c7fc61431c035ad0fc068185e70b1bd775c0b770e87f8cbf01559ab55146c9f4ecc8ebdaa85e5c0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.106">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseNuExtPackages)' == 'true'">
+    <PackageReference Include="NuExt.System" Version="0.1.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(UseNuExtPackages)' == 'false'">
+    <ProjectReference Include="..\..\NuExt.System\src\NuExt.System.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\logo128.png" Pack="true" PackagePath="\" />
+    <None Include=".\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

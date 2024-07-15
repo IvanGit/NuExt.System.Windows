@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuExt.System.Windows", "src\NuExt.System.Windows.csproj", "{94D0EDF9-0000-4EE1-B840-74E582ED96E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuExt.System.Windows.Tests", "tests\NuExt.System.Windows.Tests.csproj", "{60730BD0-80D4-46D8-9480-68F8FEA8C20E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94D0EDF9-0000-4EE1-B840-74E582ED96E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D0EDF9-0000-4EE1-B840-74E582ED96E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D0EDF9-0000-4EE1-B840-74E582ED96E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D0EDF9-0000-4EE1-B840-74E582ED96E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60730BD0-80D4-46D8-9480-68F8FEA8C20E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60730BD0-80D4-46D8-9480-68F8FEA8C20E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60730BD0-80D4-46D8-9480-68F8FEA8C20E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60730BD0-80D4-46D8-9480-68F8FEA8C20E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F0FE387-F21D-4C2A-89E5-B0097B65AB43}
+	EndGlobalSection
+EndGlobal
