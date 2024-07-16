@@ -1,10 +1,9 @@
 ﻿namespace System.Windows
 {
     /// <summary>
-    /// The BindingProxy class is used as a workaround to pass DataContext between elements 
-    /// that do not have a direct binding path available. It inherits from Freezable,
-    /// allowing it to be utilized in XAML resources and enabling advanced binding scenarios.
-    /// This generic version supports type-safe data binding by specifying the type of the DataContext.
+    /// Passes DataContext between elements without a direct binding path. 
+    /// Inherits from Freezable for use in XAML resources and advanced binding scenarios.
+    /// This generic version enables type-safe data binding by specifying the DataContext type.
     /// </summary>
     /// <typeparam name="T">The type of the DataContext.</typeparam>
     /// <remarks>
@@ -12,22 +11,17 @@
     /// across different elements that might be separated by templates or other containers
     /// which do not permit direct DataContext inheritance.
     ///
-    /// Example usage in XAML:
+    /// Example usage:
     ///
-    /// First, define a concrete implementation of BindingProxy for your ViewModel:
-    ///
-    /// <code lang="csharp">
-    /// <![CDATA[
+    /// Define a concrete implementation for your ViewModel:
+    /// <code><![CDATA[
     /// public class ExampleViewModelBindingProxy : BindingProxy<ExampleViewModel>
     /// {
     /// }
-    /// ]]>
-    /// </code>
+    /// ]]></code>
     ///
-    /// Then, use it in your XAML:
-    ///
-    /// <code lang="xaml">
-    /// <![CDATA[
+    /// Use it in XAML:
+    /// <code><![CDATA[
     /// <Window x:Class="YourNamespace.MainWindow"
     ///         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     ///         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -42,8 +36,7 @@
     ///         <!-- Your UI elements here -->
     ///     </Grid>
     /// </Window>
-    /// ]]>
-    /// </code>
+    /// ]]></code>
     /// </remarks>
     public class BindingProxy<T>: Freezable where T: class
     {

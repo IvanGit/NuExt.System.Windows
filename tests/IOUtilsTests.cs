@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NuExt.System.Windows.Tests
 {
-    public class IOUtilsTest
+    public class IOUtilsTests
     {
         [Test]
         public void SmartEndTrimTest()

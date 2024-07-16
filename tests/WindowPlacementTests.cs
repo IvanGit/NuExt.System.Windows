@@ -1,0 +1,115 @@
+﻿using System.Drawing;
+using System.Text.Json;
+using System.Windows;
+using System.Windows.Threading;
+using Point = System.Drawing.Point;
+
+namespace NuExt.System.Windows.Tests
+{
+    [Apartment(ApartmentState.STA)]
+    internal class WindowPlacementTests
+    {
+        [OneTimeTearDown]
+        public void Dispose()
+        {
+            Dispatcher.CurrentDispatcher.InvokeShutdown();//to prevent InvalidComObjectException
+        }
+
+        [Test]
+        public void SerializationTest()
+        {
+            var json = """
+                {
+                  "MinPosition": {
+                    "X": -1,
+                    "Y": -1
+                  },
+                  "MaxPosition": {
+                    "X": -1,
+                    "Y": -1
+                  },
+                  "NormalPosition": {
+                    "X": 503,
+                    "Y": 112,
+                    "Width": 1040,
+                    "Height": 563
+                  },
+                  "ShowCmd": 1,
+                  "ResizeMode": 2,
+                  "WindowStyle": 1
+                }
+                """;
+
+            var windowPlacement = JsonSerializer.Deserialize<WindowPlacement>(json, WindowExtensions.SerializerOptions);
+            Assert.Multiple(() =>
+            {
+                Assert.That(windowPlacement, Is.Not.Null);
+                Assert.That(windowPlacement!.MinPosition, Is.EqualTo(new Point(-1, -1)));
+                Assert.That(windowPlacement!.MaxPosition, Is.EqualTo(new Point(-1, -1)));
+                Assert.That(windowPlacement!.NormalPosition, Is.EqualTo(new Rectangle(503, 112, 1040, 563)));
+                Assert.That(windowPlacement!.ShowCmd, Is.EqualTo(1));
+                Assert.That(windowPlacement!.ResizeMode, Is.EqualTo(ResizeMode.CanResize));
+                Assert.That(windowPlacement!.WindowStyle, Is.EqualTo(WindowStyle.SingleBorderWindow));
+            });
+
+            var output = JsonSerializer.Serialize(windowPlacement, WindowExtensions.SerializerOptions);
+            Assert.That(output, Is.EqualTo(json));
+        }
+
+        [Test]
+        public async Task IncorrectWindowPlacementTest()
+        {
+            var incorrectJson = """
+                {
+                  "showCmd": 1,
+                  "minPosition": {
+                    "X": -1,
+                    "Y": -1
+                  },
+                  "maxPosition": {
+                    "X": -1,
+                    "Y": -1
+                  },
+                  "normalPosition": {
+                    "Left": 300,
+                    "Top": 44,
+                    "Right": 1580,
+                    "Bottom": 1004
+                  },
+                  "WindowStyle": 1,
+                  "ResizeMode": 2
+                }
+                """;
+
+            var windowPlacement = JsonSerializer.Deserialize<WindowPlacement>(incorrectJson, WindowExtensions.SerializerOptions);
+            Assert.That(windowPlacement, Is.Not.Null);
+
+            var output = JsonSerializer.Serialize(windowPlacement, WindowExtensions.SerializerOptions);
+            Assert.That(output, Is.Not.EqualTo(incorrectJson));
+
+            var window = new Window();
+            var tcs = new TaskCompletionSource<bool>();
+            bool isSourceInitialized = false;
+            window.SourceInitialized += (sender, e) =>
+            {
+                Assert.That(isSourceInitialized, Is.False);
+
+                var placementStr = window.GetPlacementAsJson();
+                Assert.That(placementStr, Is.Not.Null.Or.Empty);
+
+                bool result = window.SetPlacement(windowPlacement);
+                Assert.That(result, Is.EqualTo(false));
+
+                var newPlacementStr = window.GetPlacementAsJson();
+                Assert.That(newPlacementStr, Is.EqualTo(placementStr));
+
+                tcs.SetResult(true);
+                isSourceInitialized = true;
+            };
+            window.Show();
+            await tcs.Task;
+            window.Close();
+            Assert.Pass();
+        }
+    }
+}

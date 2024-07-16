@@ -4,7 +4,7 @@ using System.Windows.Threading;
 namespace NuExt.System.Windows.Tests
 {
     [Apartment(ApartmentState.STA)]
-    public class Tests
+    public class WindowTests
     {
         [SetUp]
         public void Setup()
