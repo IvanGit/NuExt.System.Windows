@@ -46,9 +46,9 @@
         /// <summary>
         /// Gets or sets the DataContext for this <see cref="BindingProxy{T}"/>.
         /// </summary>
-        public object DataContext
+        public T DataContext
         {
-            get => GetValue(DataContextProperty);
+            get => (T)GetValue(DataContextProperty);
             set => SetValue(DataContextProperty, value);
         }
 
