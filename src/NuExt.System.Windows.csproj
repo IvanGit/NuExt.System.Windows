@@ -14,8 +14,9 @@ System.Diagnostics.BindingErrorTraceListener
 System.IO.IOUtils
 System.Windows.BindingProxy
 System.Windows.BindingProxy&lt;T&gt;
-System.Windows.WindowPlacement</Description>
-    <Version>0.1.5</Version>
+System.Windows.WindowPlacement
+System.Windows.IDragDrop</Description>
+    <Version>0.1.6</Version>
     <RootNamespace />
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -36,7 +37,7 @@ System.Windows.WindowPlacement</Description>
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'true'">
-    <PackageReference Include="NuExt.System" Version="0.1.7" />
+    <PackageReference Include="NuExt.System" Version="0.1.8" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'false'">
