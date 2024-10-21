@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageTags>nuext;extensions;windows;wpf;xaml;ui;async</PackageTags>
-    <Description>Provides miscellaneous Windows-specific extensions.
+    <Description>Provides essential extensions and utilities for Windows application development with a focus on WPF.
 
 Commonly Used Types:
 System.Diagnostics.BindingErrorTraceListener
@@ -16,7 +16,7 @@ System.Windows.BindingProxy
 System.Windows.BindingProxy&lt;T&gt;
 System.Windows.WindowPlacement
 System.Windows.IDragDrop</Description>
-    <Version>0.1.6</Version>
+    <Version>0.1.7</Version>
     <RootNamespace />
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -37,7 +37,7 @@ System.Windows.IDragDrop</Description>
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'true'">
-    <PackageReference Include="NuExt.System" Version="0.1.8" />
+    <PackageReference Include="NuExt.System" Version="0.1.9" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'false'">
