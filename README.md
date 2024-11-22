@@ -25,10 +25,6 @@ Or through the Visual Studio package manager:
 2. Search for `NuExt.System.Windows`.
 3. Click "Install".
 
-### Acknowledgements
-
-Includes code derived from the Roslyn .NET compiler project, licensed under the MIT License. The original source code can be found in the [Roslyn GitHub repository](https://github.com/dotnet/roslyn).
-
 ### Usage Examples
 
 For comprehensive examples of how to use the package, see samples in the following repositories:
@@ -37,6 +33,10 @@ For comprehensive examples of how to use the package, see samples in the followi
 - [NuExt.DevExpress.Mvvm.MahApps.Metro](https://github.com/IvanGit/NuExt.DevExpress.Mvvm.MahApps.Metro)
 - [NuExt.Minimal.Mvvm.Windows](https://github.com/IvanGit/NuExt.Minimal.Mvvm.Windows)
 - [NuExt.Minimal.Mvvm.MahApps.Metro](https://github.com/IvanGit/NuExt.Minimal.Mvvm.MahApps.Metro)
+
+### Acknowledgements
+
+Includes code derived from the Roslyn .NET compiler project, licensed under the MIT License. The original source code can be found in the [Roslyn GitHub repository](https://github.com/dotnet/roslyn).
 
 ### License
 
