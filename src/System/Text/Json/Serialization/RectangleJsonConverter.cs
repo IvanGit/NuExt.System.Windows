@@ -7,7 +7,8 @@ namespace System.Text.Json.Serialization
     /// Custom JSON converter for the <see cref="Rectangle"/> struct. This converter handles serialization and deserialization
     /// of <see cref="Rectangle"/> instances to and from JSON objects.
     /// </summary>
-    public sealed class RectangleJsonConverter: JsonConverter<Rectangle>
+    [DebuggerStepThrough]
+    public sealed class RectangleJsonConverter : JsonConverter<Rectangle>
     {
         /// <summary>
         /// Reads a JSON object representing a <see cref="Rectangle"/> and converts it into an instance of the <see cref="Rectangle"/> struct.

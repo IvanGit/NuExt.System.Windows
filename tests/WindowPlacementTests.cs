@@ -20,6 +20,7 @@ namespace NuExt.System.Windows.Tests
         {
             var json = """
                 {
+                  "Flags": 0,
                   "MinPosition": {
                     "X": -1,
                     "Y": -1
@@ -102,6 +103,46 @@ namespace NuExt.System.Windows.Tests
 
                 var newPlacementStr = window.GetPlacementAsJson();
                 Assert.That(newPlacementStr, Is.EqualTo(placementStr));
+
+                tcs.SetResult(true);
+                isSourceInitialized = true;
+            };
+            window.Show();
+            await tcs.Task;
+            window.Close();
+            Assert.Pass();
+        }
+
+        [Test]
+        public async Task NoResizeNoneStyleTest()
+        {
+            var window = new Window() { ResizeMode = ResizeMode.NoResize, WindowStyle = WindowStyle.None };
+            var tcs = new TaskCompletionSource<bool>();
+            bool isSourceInitialized = false;
+            window.SourceInitialized += (sender, e) =>
+            {
+                Assert.That(isSourceInitialized, Is.False);
+                var windowPlacement = window.GetPlacement()!;
+                Assert.That(windowPlacement, Is.Not.Null);
+                Assert.That(windowPlacement.ResizeMode, Is.EqualTo(ResizeMode.NoResize));
+                Assert.That(windowPlacement.WindowStyle, Is.EqualTo(WindowStyle.None));
+
+                window.ResizeMode = ResizeMode.CanResize;
+                window.WindowStyle = WindowStyle.SingleBorderWindow;
+
+                var placementStr = JsonSerializer.Serialize(windowPlacement, WindowExtensions.SerializerOptions);
+                Assert.That(placementStr, Is.Not.Null.Or.Empty);
+
+                var placement = JsonSerializer.Deserialize<WindowPlacement>(placementStr, WindowExtensions.SerializerOptions)!;
+                Assert.That(placement, Is.Not.Null);
+                Assert.That(placement.ResizeMode, Is.EqualTo(ResizeMode.NoResize));
+                Assert.That(placement.WindowStyle, Is.EqualTo(WindowStyle.None));
+
+                var result = window.SetPlacement(placement);
+                Assert.That(result, Is.EqualTo(true));
+
+                Assert.That(window.ResizeMode, Is.EqualTo(ResizeMode.NoResize));
+                Assert.That(window.WindowStyle, Is.EqualTo(WindowStyle.None));
 
                 tcs.SetResult(true);
                 isSourceInitialized = true;
