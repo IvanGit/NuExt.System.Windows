@@ -16,7 +16,7 @@ System.Windows.BindingProxy
 System.Windows.BindingProxy&lt;T&gt;
 System.Windows.WindowPlacement
 System.Windows.IDragDrop</Description>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <RootNamespace />
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -38,14 +38,14 @@ System.Windows.IDragDrop</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.106">
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.162">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'true'">
-    <PackageReference Include="NuExt.System" Version="0.3.0" />
+    <PackageReference Include="NuExt.System" Version="0.3.1" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'false'">
