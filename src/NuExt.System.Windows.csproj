@@ -16,7 +16,7 @@ System.Windows.BindingProxy
 System.Windows.BindingProxy&lt;T&gt;
 System.Windows.WindowPlacement
 System.Windows.IDragDrop</Description>
-    <Version>0.3.3</Version>
+    <Version>0.3.4</Version>
     <RootNamespace />
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
@@ -37,7 +37,7 @@ System.Windows.IDragDrop</Description>
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'true'">
-    <PackageReference Include="NuExt.System" Version="0.3.3" />
+    <PackageReference Include="NuExt.System" Version="0.3.5" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(UseNuExtPackages)' == 'false'">
