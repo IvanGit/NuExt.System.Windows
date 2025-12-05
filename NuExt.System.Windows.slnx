@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/NuExt.System.Windows.csproj" />
+  <Project Path="tests/NuExt.System.Windows.Tests.csproj" />
+</Solution>
